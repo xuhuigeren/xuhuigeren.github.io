@@ -74,7 +74,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/Hexo/</loc>
+    <loc>http://example.com/tags/CMake/</loc>
     <lastmod>2021-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -88,7 +88,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/CMake/</loc>
+    <loc>http://example.com/tags/Hexo/</loc>
     <lastmod>2021-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -111,7 +111,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://example.com/categories/Tools/</loc>
     <lastmod>2021-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -125,7 +125,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/Tools/</loc>
+    <loc>http://example.com/categories/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2021-07-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
