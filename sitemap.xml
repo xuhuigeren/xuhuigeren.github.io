@@ -4,14 +4,14 @@
   <url>
     <loc>http://example.com/2021/04/10/cmake-notes/</loc>
     
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
     
   </url>
   
   <url>
     <loc>http://example.com/2021/07/10/week-2-2/</loc>
     
-    <lastmod>2021-07-11</lastmod>
+    <lastmod>2021-07-14</lastmod>
     
   </url>
   
@@ -67,43 +67,43 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://example.com/tags/CMake/</loc>
-    <lastmod>2021-07-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Jetson/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <loc>http://example.com/tags/CMake-Meson/</loc>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Hexo/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/Jetson/</loc>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/GStreamer/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Deepstreeam-Jetson/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -112,21 +112,21 @@
   
   <url>
     <loc>http://example.com/categories/Tools/</loc>
-    <lastmod>2021-07-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/Internship/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/Internship/</loc>
+    <lastmod>2021-07-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
