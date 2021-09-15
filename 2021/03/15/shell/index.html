@@ -1,0 +1,380 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>shell | 桥头打字员</title><meta name="keywords" content="Algorithm,Shell"><meta name="author" content="Henry"><meta name="copyright" content="Henry"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="整理牛客和力扣上的shell编程题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell">
+<meta property="og:url" content="http://example.com/2021/03/15/shell/index.html">
+<meta property="og:site_name" content="桥头打字员">
+<meta property="og:description" content="整理牛客和力扣上的shell编程题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg">
+<meta property="article:published_time" content="2021-03-15T07:45:40.000Z">
+<meta property="article:modified_time" content="2021-09-15T08:03:25.481Z">
+<meta property="article:author" content="Henry">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="Shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2021/03/15/shell/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'shell',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-15 16:03:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="桥头打字员" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://pic.imgdb.cn/item/60d1f5ae844ef46bb26cedfb.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">桥头打字员</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">shell</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-15T07:45:40.000Z" title="发表于 2021-03-15 15:45:40">2021-03-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-15T08:03:25.481Z" title="更新于 2021-09-15 16:03:25">2021-09-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="shell"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="nc-01统计文件的行数"><a href="#nc-01统计文件的行数" class="headerlink" title="nc_01统计文件的行数"></a>nc_01统计文件的行数</h2><p>写一个 bash脚本以输出一个文本文件 nowcoder.txt中的行数<br>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a = 10;</span><br><span class="line">    int b = 100;</span><br><span class="line">    cout &lt;&lt; &quot;a + b:&quot; &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出：<br>9</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat nowcoder.txt | wc -l</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc -l nowcoder.txt | awk &#x27;&#123;print $1&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;print NR&#125;&#x27; nowcoder.txt | tail -n1</span><br><span class="line"></span><br><span class="line">awk &#x27;END&#123;print NR&#125;&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">sed 统计行</span></span><br><span class="line">sed -n &#x27;$=&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">使用 grep 搜索 <span class="string">&quot;&quot;</span>，然后利用 grep 自带的功能统计行</span></span><br><span class="line">grep -c &quot;&quot; nowcoder.txt</span><br><span class="line"></span><br><span class="line">grep -n &quot;&quot; nowcoder.txt  | awk -F &quot;:&quot; &#x27;&#123;print $1 &#125;&#x27; | tail -n 1</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-02打印文件的最后5行"><a href="#nc-02打印文件的最后5行" class="headerlink" title="nc_02打印文件的最后5行"></a>nc_02打印文件的最后5行</h2><p>经常查看日志的时候，会从文件的末尾往前查看，于是请你写一个 bash脚本以输出一个文本文件 nowcoder.txt中的最后5行<br>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">int a = 10;</span><br><span class="line">int b = 100;</span><br><span class="line">cout &lt;&lt; &quot;a + b:&quot; &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a = 10;</span><br><span class="line">int b = 100;</span><br><span class="line">cout &lt;&lt; &quot;a + b:&quot; &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n5 nowcoder.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;NR&gt;=4&#123;print $0&#125;&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">NR ||　NF</span><br><span class="line">NR代表的是这个文本文件的行数（记录数）</span><br><span class="line">NF代表的是一个文本文件中一行（一条记录）中的字段个数/列数</span><br><span class="line">September 2003               # NR=1;NF=2</span><br><span class="line">Su Mo Tu We Th Fr Sa         # NR=2;NF=7</span><br><span class="line">    1  2  3  4  5  6         # NR=3;NF=6</span><br><span class="line">07 08 09 10 11 12 13         # NR=4;NF=7</span><br><span class="line">14 15 16 17 18 19 20         # NR=5;NF=7</span><br><span class="line">21 22 23 24 25 26 27         # NR=6;NF=7</span><br><span class="line">28 29 30                     # NR=7;NF=3</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-03输出7的倍数"><a href="#nc-03输出7的倍数" class="headerlink" title="nc_03输出7的倍数"></a>nc_03输出7的倍数</h2><p>写一个 bash脚本以输出数字 0 到 500 中 7 的倍数(0 7 14 21…)的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">for num in &#123;0..500..7&#125;; do</span><br><span class="line">  echo &quot;$&#123;num&#125;&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># seq 用于生成从一个数到另一个数之间的所有整数。</span><br><span class="line"># 用法：seq [选项]... 尾数</span><br><span class="line"># 或：seq [选项]... 首数 尾数</span><br><span class="line"># 或：seq [选项]... 首数 增量 尾数</span><br><span class="line">seq 0 7 500</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-04输出第五行内容"><a href="#nc-04输出第五行内容" class="headerlink" title="nc_04输出第五行内容"></a>nc_04输出第五行内容</h2><p>写一个 bash脚本以输出一个文本文件 nowcoder.txt 中第5行的内容</p>
+<p>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">welcome</span><br><span class="line">to</span><br><span class="line">nowcoder</span><br><span class="line">this</span><br><span class="line">is</span><br><span class="line">shell</span><br><span class="line">code</span><br></pre></td></tr></table></figure>
+<p>你的脚本应当输出：<br>is</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> p 打印 通常 p 会与参数 sed -n 一起运行～</span></span><br><span class="line">sed-n &#x27;5p&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head n 5 nowcoder.txt | tail -n 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;NR==5&#123;print $0&#125;&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;if(NR==5)&#123;print $0&#125;&#125;&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-05打印空行的行号"><a href="#nc-05打印空行的行号" class="headerlink" title="nc_05打印空行的行号"></a>nc_05打印空行的行号</h2><p>写一个 bash脚本以输出一个文本文件 nowcoder.txt中空行的行号,可能连续,从1开始</p>
+<p>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line"></span><br><span class="line">c</span><br><span class="line"></span><br><span class="line">d</span><br><span class="line"></span><br><span class="line">e</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">f</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">5</span><br><span class="line">7</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">^：开始</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">$</span><span class="bash">：结尾</span></span><br><span class="line"></span><br><span class="line">^$：表示空行</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">awk &#x27;/^$/ &#123;print NR&#125;&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;if($0 == &quot;&quot;) &#123;print NR&#125;&#125;&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;if (NF==0) print NR&#125;&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">sed -n &#x27;/^$/=&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">grep -n &#x27;^$&#x27; nowcoder.txt | awk -F: &#x27;&#123;print $1&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="nc-06去掉空行"><a href="#nc-06去掉空行" class="headerlink" title="nc_06去掉空行"></a>nc_06去掉空行</h2><p>写一个 bash脚本以去掉一个文本文件 nowcoder.txt中的空行<br>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br><span class="line"></span><br><span class="line">567</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ccc</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">abc</span><br><span class="line">567</span><br><span class="line">aaa</span><br><span class="line">bbb</span><br><span class="line">ccc</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -v 显示不包含匹配文本的所有行</span></span><br><span class="line">grep -v &#x27;^$&#x27; nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> -e 指定字符串做为查找文件内容的样式</span></span><br><span class="line">grep -e &#x27;\S&#x27;</span><br><span class="line"></span><br><span class="line">awk &#x27;&#123;if($0!=&quot;&quot;) &#123;print $0 &#125;&#125;&#x27; nowcoder.txt</span><br><span class="line">awk &#x27;!/^$/ &#123;print $NF&#125;&#x27;</span><br><span class="line"><span class="meta">#</span><span class="bash"> cat 输出文本内容，然后通过管道符交由 awk 做非空校验然后输出</span></span><br><span class="line">cat nowcoder.txt | awk NF</span><br><span class="line"></span><br><span class="line">sed &#x27;/^$/d&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-07打印字母数小于8的单词"><a href="#nc-07打印字母数小于8的单词" class="headerlink" title="nc_07打印字母数小于8的单词"></a>nc_07打印字母数小于8的单词</h2><p>写一个 bash脚本以统计一个文本文件 nowcoder.txt中字母数小于8的单词。</p>
+<p>示例:假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">how they are implemented and applied in computer </span><br></pre></td></tr></table></figure>
+
+
+
+<p>你的脚本应当输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">how</span><br><span class="line">they</span><br><span class="line">are</span><br><span class="line">and</span><br><span class="line">applied</span><br><span class="line">in</span><br></pre></td></tr></table></figure>
+<p>说明:不要担心你输出的空格以及换行的问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat nowcoder.txt | awk &#x27;&#123;</span><br><span class="line">for (i=1;i&lt;=NF;i++)&#123;</span><br><span class="line">        if (length($i) &lt; 8)</span><br><span class="line">                print $i</span><br><span class="line">&#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-08统计所有进程占用内存大小的和"><a href="#nc-08统计所有进程占用内存大小的和" class="headerlink" title="nc_08统计所有进程占用内存大小的和"></a>nc_08统计所有进程占用内存大小的和</h2><p>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root         2  0.0  0.0      0     0 ?        S    9月25   0:00 [kthreadd]</span><br><span class="line">root         4  0.0  0.0      0     0 ?        I&lt;   9月25   0:00 [kworker/0:0H]</span><br><span class="line">web       1638  1.8  1.8 6311352 612400 ?      Sl   10月16  21:52 test</span><br><span class="line">web       1639  2.0  1.8 6311352 612401 ?      Sl   10月16  21:52 test</span><br><span class="line">tangmiao-pc       5336   0.0  1.4  9100240 238544   ??  S     3:09下午   0:31.70 /Applications</span><br></pre></td></tr></table></figure>
+
+<p>上内容是通过<code>ps aux | grep -v &#39;RSS TTY&#39; </code>命令输出到<code>nowcoder.txt</code>文件下面的<br>请你写一个脚本计算一下所有进程占用内存大小的和:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;a+=$6&#125;END&#123;print a&#125;&#x27;</span><br><span class="line">对第一列数字求和： awk &#x27;&#123;a+=$1&#125;END&#123;print a&#125;&#x27;</span><br><span class="line">对第二列数字求和： awk &#x27;&#123;a+=$2&#125;END&#123;print a&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-09统计每个单词出现的次数"><a href="#nc-09统计每个单词出现的次数" class="headerlink" title="nc_09统计每个单词出现的次数"></a>nc_09统计每个单词出现的次数</h2><p>写一个 bash脚本以统计一个文本文件 nowcoder.txt 中每个单词出现的个数。</p>
+<p>为了简单起见，你可以假设：<br>nowcoder.txt只包括小写字母和空格。<br>每个单词只由小写字母组成。<br>单词间由一个或多个空格字符分隔。</p>
+<p>示例:<br>假设 nowcoder.txt 内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">welcome nowcoder</span><br><span class="line">welcome to nowcoder</span><br><span class="line">nowcoder</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出（以词频升序排列）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">to 1 </span><br><span class="line">welcome 2 </span><br><span class="line">nowcoder 3 </span><br></pre></td></tr></table></figure>
+
+<p>说明:<br>不要担心个数相同的单词的排序问题，每个单词出现的个数都是唯一的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat nowcoder.txt | xargs -n1 | sort | uniq -c | sort -n | awk &#x27;&#123;print $2,$1&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>对于nowcoder.txt文件进行词频统计，首先要做的事情就是把nowcoder.txt文件当中的每一个单词分割出来，分割出每一个单词可以使用以下两种方式：</p>
+<p><strong>使用awk命令：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;for(i=1;i&lt;=NF;i++)&#123;print $i&#125;&#125;&#x27; nowcoder.txt </span><br><span class="line">其中NF表示当前记录的字段数（即列数）</span><br><span class="line"><span class="meta">$</span><span class="bash">i 文件中每行以间隔符号分割的不同字段</span></span><br><span class="line">如果对awk命令不熟悉，可以参考之前分享的一篇文章学习：</span><br><span class="line">号称三剑客之首的awk，开始秀！</span><br></pre></td></tr></table></figure>
+<p><strong>使用xargs命令：</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cat nowcoder.txt | xargs -n1</span><br><span class="line">xargs命令是用于给其他命令传递参数的一个过滤器，也是组合多个命令的一个工具。</span><br><span class="line">-n1，指定 输出时每行输出的 1列</span><br><span class="line">welcome</span><br><span class="line">nowcoder</span><br><span class="line">welcome</span><br><span class="line">to</span><br><span class="line">nowcoder</span><br><span class="line">nowcoder</span><br><span class="line"></span><br><span class="line">-n2，指定 输出时每行输出的 2列</span><br><span class="line">welcome nowcoder</span><br><span class="line">welcome to</span><br><span class="line">nowcoder nowcoder</span><br></pre></td></tr></table></figure>
+
+<p>可以在xargs的基础之上使用一些shell小工具来得到每个单词出现的次数。sort 工具及 uniq 工具，这里仅介绍解决问题使用的参数，关于小工具（grep、cut、sort、uniq、tee、diff、past、tr）可以参考文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/7pfE3S-uDSLOG1AZSj3D1A">Shell编程之文本处理工具与bash的特性</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">sort工具用于排序，它将文件的每一行作为一个单位，从首字母向后按照ASCII码值进行比较，默认将他们升序输出。</span><br><span class="line">nowcoder</span><br><span class="line">nowcoder</span><br><span class="line">nowcoder</span><br><span class="line">to</span><br><span class="line">welcome</span><br><span class="line">welcome</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uniq用去取出连续的重复行</span><br><span class="line"></span><br><span class="line">-c ：统计重复行的次数</span><br><span class="line">     3 nowcoder</span><br><span class="line">     1 to</span><br><span class="line">     2 welcome</span><br><span class="line"></span><br><span class="line">-r : 降序排列</span><br><span class="line"></span><br><span class="line">-n : 以数字排序，默认是按照字符排序的。</span><br><span class="line">      1 to</span><br><span class="line">      2 welcome</span><br><span class="line">      3 nowcoder</span><br><span class="line"></span><br><span class="line">最后我们仅需要对上面的结果进行排序啦，很简单的使用sort就可以啦！</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="nc-10第二列是否有重复"><a href="#nc-10第二列是否有重复" class="headerlink" title="nc_10第二列是否有重复"></a>nc_10第二列是否有重复</h2><p>给定一个 <code>nowcoder.txt</code>文件，其中有3列信息，如下实例，编写一个<code>shell</code>脚本来检查文件第二列是否有重复，且有几个重复，并提取出重复的行的第二列信息：<br>实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">20201001 python 99</span><br><span class="line">20201002 go 80</span><br><span class="line">20201002 c++ 88</span><br><span class="line">20201003 php 77</span><br><span class="line">20201001 go 88</span><br><span class="line">20201005 shell 89</span><br><span class="line">20201006 java 70</span><br><span class="line">20201008 c 100</span><br><span class="line">20201007 java 88</span><br><span class="line">20201006 go 97</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 java</span><br><span class="line">3 go</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;print $2&#125;&#x27; nowcoder.txt | sort | uniq -cd | sort -n</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;print $2&#125;&#x27; nowcoder.txt</span><br><span class="line"></span><br><span class="line">python</span><br><span class="line">go</span><br><span class="line">c++</span><br><span class="line">php</span><br><span class="line">go</span><br><span class="line">shell</span><br><span class="line">java</span><br><span class="line">c</span><br><span class="line">java</span><br><span class="line">go</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;print $2&#125;&#x27; nowcoder.txt | sort</span><br><span class="line"></span><br><span class="line">c</span><br><span class="line">c++</span><br><span class="line">go</span><br><span class="line">go</span><br><span class="line">go</span><br><span class="line">java</span><br><span class="line">java</span><br><span class="line">php</span><br><span class="line">python</span><br><span class="line">shell</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123;print $2&#125;&#x27; nowcoder.txt | sort | uniq -cd</span><br><span class="line"></span><br><span class="line">3 go</span><br><span class="line">2 java</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uniq [-c/d/D/u/i] [-f Fields] [-s N] [-w N] [InFile] [OutFile]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>-c: 在每列旁边显示该行重复出现的次数。</li>
+<li>-d: 仅显示重复出现的行列，显示一行。</li>
+<li>-D: 显示所有重复出现的行列，有几行显示几行。</li>
+<li>-u: 仅显示出一次的行列。</li>
+<li>-i: 忽略大小写字符的不同。</li>
+<li>-f Fields: 忽略比较指定的列数。</li>
+<li>-s N: 忽略比较前面的N个字符。</li>
+<li>-w N: 对每行第N个字符以后的内容不作比较。</li>
+</ul>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort [-b/d/f/g/i/M/n/r] [InFile]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>-b: ignore-leading-blanks，忽略前面空格符部分</li>
+<li>-d: data-order，仅考虑空格和字母数字字符</li>
+<li>-f: ignore-case，忽略大小写</li>
+<li>-g: general-numeric-sort，根据一般数值进行排序</li>
+<li>-i: ignore-nonprinting，忽略不可打印的字符，比如换行符、回车符</li>
+<li>-M: month-sort，以月份进行排序</li>
+<li>-n: numeric-sort，根据字符串数值进行排序-r: reverse，反向输出排序结果</li>
+</ul>
+</blockquote>
+<h2 id="nc-11转置文件中的内容"><a href="#nc-11转置文件中的内容" class="headerlink" title="nc_11转置文件中的内容"></a>nc_11转置文件中的内容</h2><p>写一个 bash脚本来转置文本文件<code>nowcoder.txt</code>中的文件内容。</p>
+<p>为了简单起见，你可以假设：<br>你可以假设每行列数相同，并且每个字段由空格分隔</p>
+<p>示例:<br>假设 <code>nowcoder.txt </code>内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">job salary</span><br><span class="line">c++ 13</span><br><span class="line">java 14</span><br><span class="line">php 12</span><br></pre></td></tr></table></figure>
+
+<p>你的脚本应当输出（以词频升序排列）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">job c++ java php</span><br><span class="line">salary 13 14 12</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;&#123; </span><br><span class="line">    # NF表示列数,NR表示当前行数</span><br><span class="line">    for (i=1; i&lt;=NF; i++)&#123;</span><br><span class="line">        if(NR==1)&#123; </span><br><span class="line">            # 处理第一行时,将第i列的值($i)存入arr[i],i为数组的下标,数组不用定义可以直接使用</span><br><span class="line">            arr[i]=$i;   </span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            # 不是第一行时，将该行对应i列的值拼接到arr[i]</span><br><span class="line">            arr[i]=arr[i] &quot; &quot; $i</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">END&#123;</span><br><span class="line">    # 每行处理完以后,输出数组</span><br><span class="line">    for (i=1; i&lt;=NF; i++)&#123;</span><br><span class="line">        print arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#x27; nowcoder.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="shell基本语法"><a href="#shell基本语法" class="headerlink" title="shell基本语法"></a>shell基本语法</h2><p><strong>AWK 是一种处理文本文件的语言，是一个强大的文本分析工具</strong></p>
+<p><strong>语法</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk [选项参数] <span class="string">&#x27;script&#x27;</span> var=value file(s)</span><br><span class="line">或</span><br><span class="line">awk [选项参数] -f scriptfile var=value file(s)</span><br></pre></td></tr></table></figure>
+
+<p><strong>选项参数</strong></p>
+<ul>
+<li>-F fs or –field-separator fs<br>指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:</li>
+<li>-v var=value or –asign var=value<br>赋值一个用户定义变量。</li>
+<li>-f scripfile or –file scriptfile<br>从脚本文件中读取awk命令。</li>
+<li>-mf nnn and -mr nnn<br>对nnn值设置内在限制，-mf选项限制分配给nnn的最大块数目；-mr选项限制记录的最大数目。这两个功能是Bell实验室版awk的扩展功能，在标准awk中不适用。</li>
+<li>-W compact or –compat, -W traditional or –traditional<br>在兼容模式下运行awk。所以gawk的行为和标准的awk完全一样，所有的awk扩展都被忽略。</li>
+<li>-W copyleft or –copyleft, -W copyright or –copyright<br>打印简短的版权信息。</li>
+<li>-W help or –help, -W usage or –usage<br>打印全部awk选项和每个选项的简短说明。</li>
+<li>-W lint or –lint<br>打印不能向传统unix平台移植的结构的警告。</li>
+<li>-W lint-old or –lint-old<br>打印关于不能向传统unix平台移植的结构的警告。</li>
+<li>-W posix<br>打开兼容模式。但有以下限制，不识别：/x、函数关键字、func、换码序列以及当fs是一个空格时，将新行作为一个域分隔符；操作符<strong>和</strong>=不能代替^和^=；fflush无效。</li>
+<li>-W re-interval or –re-inerval<br>允许间隔正则表达式的使用，参考(grep中的Posix字符类)，如括号表达式[[:alpha:]]。</li>
+<li>-W source program-text or –source program-text<br>使用program-text作为源代码，可与-f命令混用。</li>
+<li>-W version or –version<br>打印bug报告信息的版本。</li>
+</ul>
+<p><strong>sed</strong></p>
+<p><strong>sed 命令是利用脚本来处理文本文件。</strong></p>
+<p><strong>语法</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed [-hnV][-e&lt;script&gt;][-f&lt;script文件&gt;][文本文件]</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数说明</strong></p>
+<ul>
+<li>-e<script>或--expression=<script> 以选项中指定的script来处理输入的文本文件。</li>
+<li>-f&lt;script文件&gt;或–file=&lt;script文件&gt; 以选项中指定的script文件来处理输入的文本文件。</li>
+<li>-h或–help 显示帮助。</li>
+<li>-n或–quiet或–silent 仅显示script处理后的结果。</li>
+<li>-V或–version 显示版本信息。</li>
+</ul>
+<p><strong>动作说明</strong>：</p>
+<ul>
+<li>a ：新增， a 的后面可以接字串，而这些字串会在新的一行出现(目前的下一行)</li>
+<li>c ：取代， c 的后面可以接字串，这些字串可以取代 n1,n2 之间的行！</li>
+<li>d ：删除，因为是删除啊，所以 d 后面通常不接任何咚咚；</li>
+<li>i ：插入， i 的后面可以接字串，而这些字串会在新的一行出现(目前的上一行)；</li>
+<li>p ：打印，亦即将某个选择的数据印出。通常 p 会与参数 sed -n 一起运行～</li>
+<li>s ：取代，可以直接进行取代的工作哩！通常这个 s 的动作可以搭配正规表示法！例如 1,20s/old/new/g 就是啦！</li>
+</ul>
+<p>** wc**</p>
+<p><strong>wc命令的功能为统计指定文件中的字节数、字数、行数, 并将统计结果显示输出。</strong></p>
+<p><strong>参数说明</strong></p>
+<ul>
+<li>-c 统计字节数 chars byres</li>
+<li>-l 统计行数      lines</li>
+<li>-w 统计词数    words</li>
+</ul>
+</script></li></ul></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Henry</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/03/15/shell/">http://example.com/2021/03/15/shell/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">桥头打字员</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithm/">Algorithm</a><a class="post-meta__tags" href="/tags/Shell/">Shell</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/24/%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8-%E7%BD%91%E7%BB%9CIO/"><img class="prev-cover" src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">网络IO演变发展过程和模型介绍</div></div></a></div><div class="next-post pull-right"><a href="/2021/03/03/%E7%A8%8B%E5%BA%8F%E3%80%81%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/"><img class="next-cover" src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">程序、进程和线程</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/02/21/Algorithm/" title="Algorithm"><img class="cover" src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-21</div><div class="title">Algorithm</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://pic.imgdb.cn/item/60d1f5ae844ef46bb26cedfb.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Henry</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-01%E7%BB%9F%E8%AE%A1%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%8C%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">nc_01统计文件的行数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-02%E6%89%93%E5%8D%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E5%90%8E5%E8%A1%8C"><span class="toc-number">2.</span> <span class="toc-text">nc_02打印文件的最后5行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-03%E8%BE%93%E5%87%BA7%E7%9A%84%E5%80%8D%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">nc_03输出7的倍数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-04%E8%BE%93%E5%87%BA%E7%AC%AC%E4%BA%94%E8%A1%8C%E5%86%85%E5%AE%B9"><span class="toc-number">4.</span> <span class="toc-text">nc_04输出第五行内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-05%E6%89%93%E5%8D%B0%E7%A9%BA%E8%A1%8C%E7%9A%84%E8%A1%8C%E5%8F%B7"><span class="toc-number">5.</span> <span class="toc-text">nc_05打印空行的行号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-06%E5%8E%BB%E6%8E%89%E7%A9%BA%E8%A1%8C"><span class="toc-number">6.</span> <span class="toc-text">nc_06去掉空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-07%E6%89%93%E5%8D%B0%E5%AD%97%E6%AF%8D%E6%95%B0%E5%B0%8F%E4%BA%8E8%E7%9A%84%E5%8D%95%E8%AF%8D"><span class="toc-number">7.</span> <span class="toc-text">nc_07打印字母数小于8的单词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-08%E7%BB%9F%E8%AE%A1%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B%E5%8D%A0%E7%94%A8%E5%86%85%E5%AD%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%92%8C"><span class="toc-number">8.</span> <span class="toc-text">nc_08统计所有进程占用内存大小的和</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-09%E7%BB%9F%E8%AE%A1%E6%AF%8F%E4%B8%AA%E5%8D%95%E8%AF%8D%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">nc_09统计每个单词出现的次数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-10%E7%AC%AC%E4%BA%8C%E5%88%97%E6%98%AF%E5%90%A6%E6%9C%89%E9%87%8D%E5%A4%8D"><span class="toc-number">10.</span> <span class="toc-text">nc_10第二列是否有重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nc-11%E8%BD%AC%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">11.</span> <span class="toc-text">nc_11转置文件中的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">12.</span> <span class="toc-text">shell基本语法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/17/gstreamer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Gobject%E7%B1%BB%E5%AF%B9%E8%B1%A1/" title="GStreamer学习笔记--GObject类对象"><img src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="GStreamer学习笔记--GObject类对象"/></a><div class="content"><a class="title" href="/2021/07/17/gstreamer%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Gobject%E7%B1%BB%E5%AF%B9%E8%B1%A1/" title="GStreamer学习笔记--GObject类对象">GStreamer学习笔记--GObject类对象</a><time datetime="2021-07-17T08:48:47.000Z" title="发表于 2021-07-17 16:48:47">2021-07-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/10/week-2-2/" title="Deepstream 检测安全帽👷"><img src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Deepstream 检测安全帽👷"/></a><div class="content"><a class="title" href="/2021/07/10/week-2-2/" title="Deepstream 检测安全帽👷">Deepstream 检测安全帽👷</a><time datetime="2021-07-10T05:32:29.000Z" title="发表于 2021-07-10 13:32:29">2021-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/09/week-2-1/" title="Installing  GStreamer"><img src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Installing  GStreamer"/></a><div class="content"><a class="title" href="/2021/07/09/week-2-1/" title="Installing  GStreamer">Installing  GStreamer</a><time datetime="2021-07-09T13:01:50.000Z" title="发表于 2021-07-09 21:01:50">2021-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/02/week-1/" title="Jetson 部署 Deepstream"><img src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jetson 部署 Deepstream"/></a><div class="content"><a class="title" href="/2021/07/02/week-1/" title="Jetson 部署 Deepstream">Jetson 部署 Deepstream</a><time datetime="2021-07-02T12:13:16.000Z" title="发表于 2021-07-02 20:13:16">2021-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/04/11/webserver/" title="webserver"><img src="https://pic.imgdb.cn/item/60ead34a5132923bf8e4a1b8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="webserver"/></a><div class="content"><a class="title" href="/2021/04/11/webserver/" title="webserver">webserver</a><time datetime="2021-04-11T13:32:24.000Z" title="发表于 2021-04-11 21:32:24">2021-04-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Henry</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
