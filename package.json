@@ -9,11 +9,11 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.4.0"
+    "version": "5.4.2"
   },
   "dependencies": {
     "-": "0.0.1",
-    "hexo": "^5.4.0",
+    "hexo": "^5.4.2",
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-browsersync": "^0.3.0",
     "hexo-deployer-git": "^3.0.0",
