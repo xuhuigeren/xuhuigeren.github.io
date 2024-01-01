@@ -25,13 +25,13 @@ deploy:
   branch: master
 ```
 
-![01](.\多PC协同管理hexo\1.png)
+![01](./多PC协同管理hexo/1.png)
 
 **新建一个分支<hexo>**，并且把hexo分支设为default分支，配置文件决定了hexo d每次推到master分支，master和hexo两个分支互相独立，hexo分支拉到本地，本地新增、删改时，git add，git commit、git push来更新源文件，然后执行hexo d更新静态页面，Mac/Ubuntu端同样本地维护hexo分支，为了保证同步，推荐先`git pull`合并更新在编辑博客。
 
-![03](.\多PC协同管理hexo\3.png)
+![03](./多PC协同管理hexo/3.png)
 
-![02](.\多PC协同管理hexo\2.png)
+![02](./多PC协同管理hexo/2.png)
 
 **编辑hexo分支**
 
@@ -39,9 +39,9 @@ deploy:
 
 1. git仓库到本地（clone下来的是默认的hexo分支）
 
-   ```
-   git clone git@github.com:username/username.github.io.git
-   ```
+```
+git clone git@github.com:username/username.github.io.git
+```
 
 2. 下载的文件夹里仅留下.git 文件夹，其他的文件都删除
 3. 将原来hexo blog文件夹内除.deploy_git 以外都复制到git下来的文件夹
@@ -62,10 +62,7 @@ git push
 
 ### 在Mac上管理博客
 
-Ubuntu同理
-
 * **配置环境**
-
 >* 安装Node.js
 >  * 版本最好与win一样
 >  * node -v和npm -v查看
