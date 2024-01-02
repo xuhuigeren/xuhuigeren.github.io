@@ -12,7 +12,7 @@ description: Welcome to Hexo
 
 我的blog是基于gitub pages和hexo搭建的静态博客，环境win10 + nodejs + git，本地编写md文件，然后部署到github转化为html托管于github，优点不用花钱买服务器。
 
-如题，因为部署blog的老PC是台式机，痛点：想更新下blog还得坐到电脑前，总归有点不方便，现在想在Mac/Ubuntu上也能管理hexo博客。既然blog都托管在github，那git指定行啊。
+如题，因为部署blog的老PC是台式机，想更新下blog还得坐到电脑前，总归有点不方便，现在想在Mac/Ubuntu上也能管理hexo博客。既然blog都托管在github，那git指定行啊。
 
 ### 新建一个git分支
 
