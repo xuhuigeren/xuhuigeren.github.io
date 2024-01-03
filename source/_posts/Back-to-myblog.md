@@ -25,4 +25,6 @@ description: 越来越笨，只能不停学习呀
 
 
 
-1.1 Happy new year~~~  [from win] [from mac]
+1.1 Happy new year~~
+
+1.3 freedom
