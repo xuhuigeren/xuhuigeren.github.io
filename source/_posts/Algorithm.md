@@ -10,6 +10,47 @@ description: 整理记录刷的算法题，好记性不如烂笔头啊！题解�
 
 [TOC]
 
+# HW
+
+## [字符串分隔](https://www.nowcoder.com/practice/d9162298cb5a437aad722fccccaae8a7?tpId=37&tqId=21227&rp=1&ru=/exam/oj/ta&qru=/exam/oj/ta&sourceUrl=%2Fexam%2Foj%2Fta%3FtpId%3D37&difficulty=undefined&judgeStatus=undefined&tags=&title=)
+
+•输入一个字符串，请按长度为8拆分每个输入字符串并进行输出；
+
+•长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。
+
+**示例1**
+
+```
+输入：
+abc
+输出：
+abc00000
+```
+
+**提示**
+
+* 每个字符串长度小于等于100
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    while (cin >> s) { // 注意 while 处理多个 case
+        while (s.size() % 8) {
+            s += '0';
+        }
+        
+        for (int i=0; i<s.size()/8; ++i) {
+            cout << s.substr(i*8, 8) << endl;
+        }
+    }
+    return 0;
+}
+
+```
+
 # 滑动窗口/双指针
 
 **最短或最长的子串  最多可变k次**
@@ -7082,4 +7123,3 @@ int main(){
     return 0;
 }
 ```
-
