@@ -90,11 +90,12 @@ bcbcbc
 
 **提示：**
 
-1 <= s.length <= 5 x 10^5
+* 1 <= s.length <= 5 x 10^5
 
-s 只包含小写英文字母。
+* s 只包含小写英文字母。
 
 ```cpp
+/* 字符串 */
 #include <bits/stdc++.h>
 using namespace std;
 
