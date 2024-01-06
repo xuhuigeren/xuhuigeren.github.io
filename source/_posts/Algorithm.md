@@ -118,6 +118,103 @@ int main () {
 }
 ```
 
+##  数字反转打印
+
+```
+示例
+输入
+2
+输出
+    1***    
+3***    2***
+
+XXXX1***
+3***XXXX2***
+备注
+符号*表示数字不满4位时的补位，符号X表示数字之间的空格，实际不会打印X，直接打印空格
+```
+
+数字反转打印规则如下:
+a、每个数字占据4个位置，不足四位用*补位，如1打印为1***.
+b、数字之间相邻4空格。
+C、数字的打印顺序按照正序逆序交替打印，奇数行正序，偶数行逆序。
+d、最后一行数字顶格，第n-1行相对第n行缩进四个空格
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    string solve(int n) {
+        if (n == 1) {
+            return "1";
+        }
+        
+        // 创建一个二维数组，用于存储每一行的数字
+        vector<vector<int>> nums(n + 1, vector<int>());
+        
+        int currVal = 1;
+        for (int row = 1; row <= n; ++row) { // 按行遍历
+            if (row % 2 == 1) {
+                for (int i = 0; i < row; ++i) { // 奇数行正序排列
+                    nums[row].push_back(currVal++);
+                }
+            } else {
+                for (int i = 0; i < row; ++i) { // 偶数行逆序排列
+                    nums[row].insert(nums[row].begin(), currVal++);
+                }
+            }
+        }
+        
+        string strAns;
+        int blackNum = 0; // 用于记录每一行的缩进空格数
+        
+        // 从最后一行开始遍历到第一行
+        for (int k = n; k >= 1; --k) {
+            vector<int> num = nums[k];
+            stringstream ss;
+            string curr(blackNum, ' '); // 每行缩进大小
+            ss << curr;
+            
+            // 格式化数字并拼接到当前行的字符串中
+            for (size_t i = 0; i < num.size(); ++i) { // 数组下标为size_t
+                ss << left << setfill('*') << setw(4) << num[i];
+                if (i != num.size() - 1) { // 不为行尾，加4个空格
+                    ss << "    "; 
+                }
+            }
+            ss << "\n"; // 每一行结束后换行
+            strAns = ss.str() + strAns; // 将当前行的字符串加到最终结果的前面
+            blackNum += 4; // 更新缩进空格数，使其加4，用于下一行的缩进空格数
+        }
+        
+        return strAns;
+    }
+};
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    
+    Solution obj;
+    string result = obj.solve(n);
+    cout << result;
+    
+    return 0;
+}
+
+/*
+#include <iomanip>
+std::setfill ：设置std::setw填充什么字符 如:std::setfill('*')；默认填充空格（’ '）
+std::setw    ：需要填充多少个字符,默认填充的字符为' '空格
+std::setbase(n)     ：将输出数据转换为n进制
+std::setprecision() ：控制输出流显示浮点数的数字个数，C++默认的流输出数值有效位是6
+*/
+
+```
+
 
 
 # 滑动窗口/双指针
