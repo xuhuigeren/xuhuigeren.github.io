@@ -215,6 +215,103 @@ std::setprecision() ：控制输出流显示浮点数的数字个数，C++默认
 
 ```
 
+## 分配土地
+
+* 从前有个村庄，村民们喜欢在各种田地上插上小旗子，旗子上标识了各种不同的数字，某天全体村民决定将覆盖相同数字的最小矩阵形的土地的分配给为村里做出巨大贡献的村民，请问：此次分配土地，做出贡献的村民中最大会分配多大面积?
+
+```
+输入
+3 3
+1 0 1
+0 0 0
+0 1 0
+
+输出
+9
+
+说明：
+土地上的旗子为1, 其坐标分别为(0,0), (2,1)以及(0,2), 为了覆盖所有旗子，矩阵需要覆盖的横坐标为0和2,纵坐标为0和2,所以面积为9,即(2-0+1)*(2-0+1)=9
+
+输入
+3 3
+1 0 2
+0 0 0
+0 3 4
+
+
+输出
+1
+
+说明:
+不存在成对的旗子，返回1
+```
+
+* 输入
+  第一行输入m和n，m代表村子的土地的长，n代表土地的宽
+  第二开始输入地图上的具体标识
+
+* 输出
+  输出要分配的土地面积，包含相桐数字旗子的最小矩阵中的最大面积
+
+```cpp
+#include <bits/stdc>
+using namespace std;
+
+int calculate_largest_area(int m, int n, vector<vector<int>>& grid) {
+    // 创建一个unordered_map来存储每个数字旗子的最小矩阵边界
+    unordered_map<int, unordered_map<string, int>> flags;
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            int flag = grid[i][j];
+            // 如果当前位置有旗子
+            if (flag != 0) {
+                // 如果旗子是第一次出现，初始化其边界
+                if (flags.find(flag) == flags.end()) {
+                    flags[flag] = {{"min_x", i}, {"max_x", i}, {"min_y", j}, {"max_y", j}};
+                }
+                else {
+                    // 更新旗子的边界
+                    flags[flag]["min_x"] = min(flags[flag]["min_x"], i);
+                    flags[flag]["max_x"] = max(flags[flag]["max_x"], i);
+                    flags[flag]["min_y"] = min(flags[flag]["min_y"], j);
+                    flags[flag]["max_y"] = max(flags[flag]["max_y"], j);
+                }
+            }
+        }
+    }
+
+    // 遍历所有旗子，计算它们的最小覆盖矩阵面积，并找到最大值
+    int max_area = 0;
+    for (auto& flag : flags) {
+        int area = (flag.second["max_x"] - flag.second["min_x"] + 1) * (flag.second["max_y"] - flag.second["min_y"] + 1);
+        max_area = max(max_area, area);
+    }
+
+    // 如果没有旗子，则返回1
+    return max_area > 0 ? max_area : 1;
+}
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+
+    vector<vector<int>> grid(m, vector<int>(n));
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> grid[i][j];
+        }
+    }
+
+    // 计算要分配的土地面积并输出
+    int result = calculate_largest_area(m, n, grid);
+    cout << result << endl;
+
+    return 0;
+}
+```
+
 
 
 # 滑动窗口/双指针
