@@ -316,6 +316,58 @@ int main() {
 * 只能右进，左右都可出，最后只能左出
 * 双端队列
 
+## 字符串输出
+
+如果统计的个数相同，则按照ASII码由小到大排序输出 。如果有其他字符，则对这些字符不用进行统计。
+    输入一个字符串，对字符中的各个英文字符，数字，空格进行统计（可反复调用）
+    按照统计个数由多到少输出统计结果，如果统计的个数相同，则按照ASII码由小到大排序输出
+    清空目前的统计结果，重新统计
+
+```
+输入:
+aadddccddc
+输出例子:
+dca
+```
+
+
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+void solution (string s) {
+    unordered_map<char, int> mp;
+    for (char c:s) {
+        /* 空格 英文字符 数字 */
+        if (isalnum(c) || c == ' ') {
+            mp[c]++;
+        }
+    }
+    /* sort */
+    vector<pair<char, int> > vec(mp.begin(), mp.end());
+    sort(vec.begin(), vec.end(), [](const pair<char, int> &a, const pair<char, int> &b) {
+        /* ASII码由小到大排序 */
+        return (a.second > b.second) || ((a.second == b.second) && (a.first < b.first));
+    });
+    /* cout */
+    for (auto& pair:vec) {
+        cout << pair.first;
+    }
+    cout << endl;
+}
+
+int main () {
+    string s;
+    while (getline(cin, s)) {
+        solution(s);
+    }
+    return 0;
+}
+```
+
+
+
 
 # 滑动窗口/双指针
 
