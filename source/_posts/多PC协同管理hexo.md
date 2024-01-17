@@ -102,5 +102,14 @@ npm install hexo-deployer-git
 
 * mac这边文件权限不足 errno -13
   * udo chown -R $USER /usr/xxx/xxx
+  
 * 26 vulnerabilities (3 low, 4 moderate, 12 high, 7 critical)
   * 如果是按以上步骤来操作的，可以不用管
+  
+* 科学上网会导致`ssh: connect to host github.com port 22: Connection timed out` 或者 `Failed to connect to github.com port 443: Timed out`
+  * git 所设端口与系统代理不一致，需重新设置
+```bash
+git config --global http.proxy http://127.0.0.1:7890 
+git config --global https.proxy http://127.0.0.1:7890
+```
+![05](./多PC协同管理hexo/5.png)
